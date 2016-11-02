@@ -1,0 +1,15 @@
+
+
+.content{
+    width:100%;
+    margin-top:50px;
+}
+.content ul{
+    width: 80%;
+    margin: 0 auto;
+}
+.content ul li{
+    list-style: none;
+    height: 25px;
+    line-height: 25px;
+}
