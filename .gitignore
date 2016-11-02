@@ -4,6 +4,9 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+.idea/
+.idea/workspace.xml
+
 
 # Node and related ecosystem
 # ==========================
@@ -14,6 +17,7 @@ public/lib/
 app/tests/coverage/
 .bower-*/
 .idea/
+.idea/workspace.xml
 coverage/
 
 # MEAN.js app and assets
@@ -23,9 +27,12 @@ uploads
 modules/users/client/img/profile/uploads
 config/env/local.js
 *.pem
+.idea/
+.idea/workspace.xml
 
 # Ignoring MEAN.JS's gh-pages branch for documenation
 _site/
+.idea/workspace.xml
 
 # General
 # =======
@@ -40,12 +47,15 @@ _site/
 *.swp
 logs/
 build/
+.idea/
+.idea/workspace.xml
 
 # Sublime editor
 # ==============
 .sublime-project
 *.sublime-project
 *.sublime-workspace
+.idea/workspace.xml
 
 # Eclipse project files
 # =====================
@@ -55,16 +65,21 @@ build/
 .metadata
 *~.nib
 local.properties
+.idea/workspace.xml
+
 
 # IntelliJ
 # ========
 *.iml
+.idea/workspace.xml
 
 # Cloud9 IDE
 # =========
 .c9/
 data/
 mongod
+.idea/
+.idea/workspace.xml
 
 # Visual Studio
 # =========
@@ -72,3 +87,5 @@ mongod
 *.ntvs*
 *.njsproj
 *.sln
+.idea/
+.idea/workspace.xml
