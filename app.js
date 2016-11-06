@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var session = require('express-session');
+var config   = require('./config').connect();
 var routes   = require('./routes');
 var users    = require('./routes/users');
 var articles = require('./routes/articles');
@@ -22,6 +23,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/**
+ * 配置  session 内存存储
+ */
+app.use(session(
+    {
+        secret: 'myblog',
+        key: 'cookieName',            //这里的name值得是cookie的name，默认cookie的name是：connect.sid
+        cookie: {maxAge: 1000 * 60 * 30 },   //设置maxAge是30m，即30m后session和相应的cookie失效过期
+        //cookie: {maxAge: 4000 },   //设置maxAge是30m，即30m后session和相应的cookie失效过期
+        resave: false,
+        saveUninitialized: true
+    }
+));
+
+
 
 app.use('/', routes);
 app.use('/users', users);

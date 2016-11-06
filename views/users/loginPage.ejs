@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="uname" placeholder="用户名" id="uname"/>
+        <input type="text" name="pwd" placeholder="密码" id="pwd"/>
+        <button onclick="login(event);return false;">登录</button>
+    </form>
+    <input type="hidden" id="originalUrl" value="<%=originalUrl%>"/>
+    <span id="01"></span>
+    <span id="02"></span>
+    <span id="03"></span>
+    <span id="04"></span>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        function login(e){
+//            e.preventDefault();
+            var uname         = $('#uname').val();
+            var pwd           = $('#pwd').val();
+            var originalUrl   = $('#originalUrl').val();
+            $.ajax({
+               url : '/users/login' ,
+                type : 'POST',
+                dataType : 'JSON',
+                data:{
+                    uname       : uname,
+                    pwd         : pwd,
+                    originalUrl : originalUrl
+                },
+                success : function(data){
+                    if(data.code == 200){
+                        $('#01').text(data.uname);
+                        var originalUrl = data.originalUrl;
+                        if(originalUrl){
+                            window.location.href = originalUrl;
+                        }
+                    }else{
+                        alert(data.msg);
+                    }
+
+                },
+                error   : function(){
+                    alert('ERROR');
+                }
+            });
+            /*$.post('/users/login',{
+                uname : uname,
+                pwd   : pwd
+            },function(data){
+                $('#01').text(data.uname);
+            },'JSON');*/
+        }
+    </script>
+</body>
+</html>

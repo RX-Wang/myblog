@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title><%= data? data.title : ''%></title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    文章ID：<%= data%>
+    <%-include ../header.ejs%>
+    <div style="width: 70%;margin: 0 auto;">
+        <h2>标题：<%-data.title%></h2>
+        <span>简介：<%-data.intro%></span>
+        <span>类型：<%-data.type%></span>
+        <div>内容：<%-data.content%></div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,67 @@
+<style rel="stylesheet" type="text/css">
+    .dropdown-menu:after{
+        border:0px !important;
+    }
+    .dropdown-menu:before{
+        border:0px !important;
+    }
+</style>
+
+<nav class="navbar navbar-inverse" role="navigation" style="border-radius:0;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">首页</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+      <ul class="nav navbar-nav">
+        <!--<li >
+          <a href="">Home</a>
+        </li>
+        <li>
+          <a href="">Link</a>
+        </li>
+        <li>
+          <a href="">Link</a>
+        </li>-->
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            文档类型 <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" style="background-color: #222;color: white;border: 0px;">
+            <li><a href="" style="color: #fff;">类型一</a></li>
+            <li><a href="" style="color: #fff;">类型二</a></li>
+            <li><a href="" style="color: #fff;">类型三</a></li>
+            <li><a href="" style="color: #fff;">类型四</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" style="float: right;">
+        <%if(!user){%>
+        <li>
+          <a href="/users/toLoginOrRegister">登录/注册</a>
+        </li>
+        <%}else{%>
+        <li>
+          <a href="/articles/toAddArticlePage">添加文章</a>
+        </li>
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            欢迎，<%=user.name%> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" style="background-color: #222;color: white;border: 0px;">
+            <li><a href="" style="color: #fff;">个人中心</a></li>
+            <li><a href="/users/loginout" style="color: #fff;">退出登录</a></li>
+          </ul>
+        </li>
+        <%}%>
+        <!--<li>
+            <a href="/users/toLogin">登录</a>
+        </li>-->
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

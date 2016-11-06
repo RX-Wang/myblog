@@ -2,95 +2,29 @@
 <html>
   <head>
     <title>工作积累</title>
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
       <link rel='stylesheet' href='/stylesheets/style.css' />
       <link rel='stylesheet' href='/stylesheets/index.css' />
   </head>
   <body>
-        <nav class="navbar navbar-inverse" role="navigation" style="border-radius:0;">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <a class="navbar-brand" href="">首页</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-              <ul class="nav navbar-nav">
-                    <li >
-                      <a href="">Home</a>
-                    </li>
-                    <li>
-                      <a href="">Link</a>
-                    </li>
-                    <li>
-                      <a href="">Link</a>
-                    </li>
-                  <li role="presentation" class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          文档类型 <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu" role="menu">
-                          <li><a href="">类型一</a></li>
-                          <li><a href="">类型二</a></li>
-                          <li><a href="">类型三</a></li>
-                          <li><a href="">类型四</a></li>
-                      </ul>
-                  </li>
-              </ul>
-              <ul class="nav navbar-nav" style="float: right;">
-                  <!--<li>
-                    <a href="/users/login">登录</a>
-                  </li>
-                  <li>
-                    <a href="/users/register">注册</a>
-                  </li>-->
-                  <li>
-                      <a href="/users/add">添加</a>
-                  </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
+      <%- include header.ejs%>
       <!--内容区 START-->
       <div class="content">
           <ul>
+              <%if(articles){for(var i=0 ; i<articles.length; i++){%>
               <li>
-                  <a href="articles/111">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
+                  <a href="articles/<%=articles[i].id%>"><%=articles[i].title%></a>
               </li>
-              <li>
-                  <a href="articles/222">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/333">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/444">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/555">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/666">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/777">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/888">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/999">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-              <li>
-                  <a href="articles/100">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a>
-              </li>
-          </ul>
+              <%}}else{%>
+                暂无文章发布
+              <%}%>
 
+          </ul>
 
       </div>
       <!--内容区 END-->
       <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
       <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
   </body>
 </html>
