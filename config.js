@@ -16,9 +16,9 @@ var config = {
     connect    : function(){
         mongoose.connect(this.connection,function(err,data){
             if(err){
-                console.error('connect to mongodb failed:' + err.message);
+                console.error('连接 mongodb 失败:' + err.message);
             } else{
-                console.log('successed to connect to mongodb:' + config.connection);
+                console.log('连接 mongodb 成功:' + config.connection);
             }
         });
     }

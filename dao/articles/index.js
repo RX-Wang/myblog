@@ -16,10 +16,12 @@ var ArticlesDao = {};
  * 文章列表（根据文章类型，没有传参的话就默认查询全部的）
  * @param req
  * @param res
+ * @param limit: 查询条数：number
+ * @param sort   排序条件：object
  * @returns {String}
  */
-ArticlesDao.list = function(params,cb){
-    articleModel.find(params,cb);
+ArticlesDao.list = function(params,limit,sort,cb){
+    articleModel.find(params).limit(limit).sort(sort).exec(cb);
 };
 
 

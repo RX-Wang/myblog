@@ -6,14 +6,17 @@
     <!--wagnEditor-->
     <link rel="stylesheet" type="text/css" href="/wangEditor/dist/css/wangEditor.min.css">
 
-    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/css/uniform.default.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
-    <link href="/assets/css/login-4.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/assets/css/uniform.default.css" />
+    <link rel="stylesheet" href="/assets/css/components.css"  id="style_components" />
+    <link rel="stylesheet" href="/assets/css/layout.css"/>
+    <link rel="stylesheet" href="/assets/css/darkblue.css"/>
+    <link rel="stylesheet" href="/assets/css/simple-line-icons.min.css"/>
+    <link rel="stylesheet" href="/assets/css/login-4.css"/>
 </head>
 <body  class=" login">
     <%-include ../header.ejs%>
-    <div style="width: 60%; float: right; margin: 50px 200px 0px 0px;">
+    <div style="width: 60%;margin: 0 auto; margin-top: 100px;">
         <div class="portlet light bordered">
             <span>添加文章<span/>
             <div class="portlet-body form">
@@ -29,44 +32,6 @@
                             <label for="form_control_1">文章简介</label>
                             <span class="help-block">对您的文章做些许简介</span>
                         </div>
-                        <!--
-                        <div class="form-group form-md-line-input form-md-floating-label has-warning">
-                            <input type="text" class="form-control" id="form_control_1">
-                            <label for="form_control_1">Warning input</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label has-error">
-                            <input type="text" class="form-control" id="form_control_1">
-                            <label for="form_control_1">Error input</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label has-info">
-                            <input type="text" class="form-control" id="form_control_1">
-                            <label for="form_control_1">Info input</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label">
-                            <textarea class="form-control" rows="3"></textarea>
-                            <label for="form_control_1">Textarea input</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label has-error">
-                            <input type="text" class="form-control" disabled="" id="form_control_1">
-                            <label for="form_control_1">Disabled</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label has-error">
-                            <input type="text" class="form-control edited" readonly="" value="You can't edit this" id="form_control_1">
-                            <label for="form_control_1">Readonly</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label">
-                            <div class="form-control form-control-static"> email@example.com </div>
-                            <label for="form_control_1">Static Control</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label has-info">
-                            <input type="text" class="form-control input-sm" id="form_control_1">
-                            <label for="form_control_1">Small input</label>
-                        </div>
-                        <div class="form-group form-md-line-input form-md-floating-label has-info">
-                            <input type="text" class="form-control input-lg" id="form_control_1">
-                            <label for="form_control_1">Large input</label>
-                        </div>
-                        -->
                         <div class="form-group form-md-line-input form-md-floating-label has-info">
                             <select class="form-control edited" id="typeSelect">
                                 <option value="">选择已有文章类型</option>
@@ -93,7 +58,7 @@
             </div>
         </div>
     </div>
-
+    <%-include ../footer.ejs%>
     <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
     <!--[if lt IE 9]>
     <script src="/assets/js/respond.min.js"></script>

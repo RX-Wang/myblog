@@ -13,6 +13,22 @@ var Articles = {};
 
 
 /**
+ * 网站首页 相关加载信息
+ * @param req
+ * @param res
+ */
+Articles.index = function(req,res){
+    var user = req.session.user || null;
+    ArticlesDao.list({},2,{'createDate':-1}, function (err,data) {
+        if(err){
+            result.failse(500,{msg:err.message},res);
+        }else{
+            res.render('index', { title: 'Express' ,user:user,articles:data});
+        }
+    });
+};
+
+/**
  * 文章详情
  * @param req
  * @param res

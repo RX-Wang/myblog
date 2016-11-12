@@ -1,19 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var ArticlesDao = require('../dao/articles');
-var result      = require('../util/result');
+var express           = require('express');
+var router            = express.Router();
+var result            = require('../util/result');
+var articleController = require('../controller/articles');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  var user = req.session.user || null;
-  ArticlesDao.list({}, function (err,data) {
-    if(err){
-      result.failse(500,{msg:err.message},res);
-    }else{
-      res.render('index', { title: 'Express' ,user:user,articles:data});
-    }
-  });
-
-});
+router.get('/', articleController.index);
 
 module.exports = router;
