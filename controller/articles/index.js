@@ -7,10 +7,12 @@
  * @type {*|exports|module.exports}
  */
 var ArticlesDao = require('../../dao/articles');
+var UsersDao     = require('../../dao/users');
 var async       = require('async');
 var result      = require('../../util/result');
-var Articles = {};
-
+var Articles    = {};
+var Promise     = require('bluebird');
+var moment      = require('moment');
 
 /**
  * 网站首页 相关加载信息
@@ -37,7 +39,59 @@ Articles.index = function(req,res){
 Articles.detail = function(req,res){
     var id   = req.query.id || req.body.id || req.params.id || null;
     var user = req.session.user;
-    ArticlesDao.detail({
+
+    var getArticle = function(id){
+        return new Promise(
+            function(resolve,reject){
+                ArticlesDao.detail({
+                    _id:id
+                },function(err,data){
+                    if(err){
+                        reject(err);
+                    }else if(!data){
+                        reject(new Error('404'));
+                    }else {
+                        var d = new Date(data.createDate);
+                        data.createDate = moment(d).format('YYYY-MM-DD');
+                        resolve(data);
+                    }
+                });
+            }
+        );
+    };
+    var getUser = function(data){
+      return new Promise(function(resolve,reject){
+          UsersDao.findOne({_id:data.authorID},function(err,user){
+              if(err){
+                  reject(err);
+              }else if(!user){
+                  reject(new Error('404'));
+              }else{
+                  data.user = user;
+                  resolve(data);
+              }
+          })
+      });
+    };
+
+    getArticle(id)
+        .then(function(article){
+            return getUser(article);
+        })
+        .then(function(articleAndUser){
+            return res.render('articles',{
+                data:articleAndUser,
+                user:user
+            });
+        })
+        .catch(function(err){
+            if(err.message == '404'){
+                console.error(err.message);
+                return res.render('404_3',{msg:'没有此文章'});
+            }
+        });
+
+    /*ArticlesDao.detail({
         _id:id
     },function(err,data){
         if(err){
@@ -49,7 +103,7 @@ Articles.detail = function(req,res){
                 user:user
             });
         }
-    });
+    });*/
 };
 
 /**
@@ -88,7 +142,7 @@ Articles.addArticle = function(req,res){
     var typeSelect  = req.query.typeSelect || req.body.typeSelect || req.params.typeSelect || null;
     var typeInput   = req.query.typeInput || req.body.typeInput || req.params.typeInput || null;
 
-    var authorID    = req.session.user.id;
+    var authorID    = req.session.user._id;
     var createDate  = new Date();
 
     if( typeSelect && typeInput){

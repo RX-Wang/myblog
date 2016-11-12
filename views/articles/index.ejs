@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <title><%= data? data.title : ''%></title>
     <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/components.css"  id="style_components" />
+    <link rel="stylesheet" href="/assets/css/layout.css"/>
+    <link rel="stylesheet" href="/assets/css/darkblue.css"/>
+    <link rel="stylesheet" href="/assets/css/simple-line-icons.min.css"/>
+    <link rel="stylesheet" href="/assets/css/login-4.css"/>
+    <link rel="stylesheet" href="/stylesheets/article.css"/>
 </head>
 <body>
     <%-include ../header.ejs%>
-    <div style="width: 70%;margin: 0 auto;">
-        <h2>标题：<%-data.title%></h2>
+    <div class="content">
+        <h2 style="text-align: center;">标题：<%-data.title%></h2>
+        <i><%=data.user.name%></i>
+        <i><%=data.createDate%></i>
         <span>简介：<%-data.intro%></span>
         <span>类型：<%-data.type%></span>
         <div>内容：<%-data.content%></div>
     </div>
+    <%- include ../footer.ejs%>
 </body>
 </html>

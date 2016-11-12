@@ -1,0 +1,10 @@
+body{
+    background:url("/img/bg.jpg") repeat-x;
+    background-color: #faf7f0;
+}
+.content{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 80px;
+    border : 1px solid;
+}
