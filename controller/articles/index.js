@@ -15,13 +15,13 @@ var Promise     = require('bluebird');
 var moment      = require('moment');
 
 /**
- * 网站首页 相关加载信息
+ * 网站首页 相关加载信息，查询文章列表
  * @param req
  * @param res
  */
 Articles.index = function(req,res){
     var user = req.session.user || null;
-    ArticlesDao.list({},2,{'createDate':-1}, function (err,data) {
+    ArticlesDao.list({},20,{'createDate':-1}, function (err,data) {
         if(err){
             result.failse(500,{msg:err.message},res);
         }else{
