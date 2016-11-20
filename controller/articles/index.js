@@ -25,7 +25,7 @@ Articles.index = function(req,res){
         if(err){
             result.failse(500,{msg:err.message},res);
         }else{
-            res.render('index', { title: 'Express' ,user:user,articles:data});
+            res.render('index', { title: 'Express' /*,user:user*/,articles:data});
         }
     });
 };
@@ -39,7 +39,6 @@ Articles.index = function(req,res){
 Articles.detail = function(req,res){
     var id   = req.query.id || req.body.id || req.params.id || null;
     var user = req.session.user;
-
     var getArticle = function(id){
         return new Promise(
             function(resolve,reject){
@@ -51,8 +50,11 @@ Articles.detail = function(req,res){
                     }else if(!data){
                         reject(new Error('404'));
                     }else {
-                        var d = new Date(data.createDate);
-                        data.createDate = moment(d).format('YYYY-MM-DD');
+                        /*var d = new Date(data.createDate);
+                        var dd = d.toLocaleDateString();
+                        var ddd = moment(data.createDate).format('YYYY-MM-DD');*/
+                        delete data.createDate;
+                        data.createDate = moment(data.createDate).format('YYYY-MM-DD');
                         resolve(data);
                     }
                 });
@@ -73,7 +75,6 @@ Articles.detail = function(req,res){
           })
       });
     };
-
     getArticle(id)
         .then(function(article){
             return getUser(article);
@@ -107,26 +108,56 @@ Articles.detail = function(req,res){
 };
 
 /**
- * 跳转到添加文章页面
+ * 跳转到添加文章页面(用于添加和编辑)
  * @param req
  * @param res
  * @returns {String}
  */
 Articles.toAddArticlePage = function(req,res){
     var user = req.session.user;
-    //获取已有的文章类型
-    ArticlesDao.typeList({},function(err,data){
+    var id = req.params.id || null;     //文章ID
+    async.parallel({
+        articleType : function(cb){
+            //获取已有的文章类型
+            ArticlesDao.typeList({},function(err,data){
+                if(err){
+                    cb(err,null);
+                }else{
+                    cb(null,data);
+                }
+            });
+        },
+        //如果是编辑文章，则获取当前文章
+        article     : function(cb){
+            if(id){
+                ArticlesDao.detail({
+                    _id:id
+                },function(err,data){
+                    if(err){
+                        cb(err,null);
+                    }else if(!data){
+                        cb(new Error('404'),null);
+                    }else {
+                        var d = new Date(data.createDate);
+                        data.createDate = moment(d).format('YYYY-MM-DD');
+                        cb(null,data);
+                    }
+                });
+            }else{
+                cb(null,null);
+            }
+        }
+    },function(err,results){
         if(err){
-            return result.failse(500,err,res);
+            return res.render('error',{error:err});
         }else{
             return res.render('articles/addArticles',{
-                user        : user,
-                articleType : data
+                articleType : results.articleType,
+                article     : results.article
             });
         }
     });
 };
-
 
 /**
  * 添加文章
@@ -135,43 +166,54 @@ Articles.toAddArticlePage = function(req,res){
  * @returns {String}
  */
 Articles.addArticle = function(req,res){
+    var articleId   = req.query.articleId || req.body.articleId || req.params.articleId || null;
     var title       = req.query.title || req.body.title || req.params.title || null;
     var intro       = req.query.intro || req.body.intro || req.params.intro || null;
     var type        = req.query.type || req.body.type || req.params.type || null;
     var content     = req.query.content || req.body.content || req.params.content || null;
     var typeSelect  = req.query.typeSelect || req.body.typeSelect || req.params.typeSelect || null;
     var typeInput   = req.query.typeInput || req.body.typeInput || req.params.typeInput || null;
-
     var authorID    = req.session.user._id;
     var createDate  = new Date();
-
     if( typeSelect && typeInput){
         return result.failse(500,{msg:'参数错误，不能同时录入选择的文章类型和输入的文章类型'},res);
     }
-
     /**
      *
      * @param typeID：如果是手动输入的 类型名称，则该参数是保存新类型以后的类型ID
      */
     var addArticle = function( typeID){
-        ArticlesDao.add(
-            {
+        if(articleId){
+            ArticlesDao.edit(articleId,{
                 title       : title,
                 intro       : intro,
                 type        : typeSelect ? typeSelect : typeID ,
-                content     : content,
-                authorID    : authorID,
-                createDate  : createDate
-            },function(err,data){
+                content     : content
+            }, function(err,data){
                 if(err){
                     return result.failse(500,{msg:err.message},res);
                 }else{
                     return result.success({code:200},res);
                 }
             });
+        }else{
+            ArticlesDao.add(
+                {
+                    title       : title,
+                    intro       : intro,
+                    type        : typeSelect ? typeSelect : typeID ,
+                    content     : content,
+                    authorID    : authorID,
+                    createDate  : createDate
+                },function(err,data){
+                    if(err){
+                        return result.failse(500,{msg:err.message},res);
+                    }else{
+                        return result.success({code:200},res);
+                    }
+                });
+        }
     };
-
-
     //如果是手动输入的文章类型，则先查询是否已存在，不存在则保存新类型，然后保存文章。
     if(typeInput){
         async.waterfall([
@@ -210,6 +252,20 @@ Articles.addArticle = function(req,res){
     }
 };
 
-
+/**
+ * 我的文章列表
+ * @param req
+ * @param res
+ */
+Articles.myArticles = function(req,res){
+    var authorID = req.session.user._id;
+    ArticlesDao.myArticles({authorID:authorID},function(err,data){
+        if(err){
+            res.render('error',{error:err});
+        }else{
+            res.render('articles/myArticles',{articles:data});
+        }
+    });
+};
 
 module.exports = Articles;

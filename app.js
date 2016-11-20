@@ -37,12 +37,19 @@ app.use(session(
         saveUninitialized: true
     }
 ));
-
-
+app.use(function(req,res,next){
+    res.locals.c_user = req.session.user;
+    next();
+});
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/articles', articles);
+
+app.use(function(req,res,next){
+    res.locals.c_user = req.session.user;
+    next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

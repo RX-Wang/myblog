@@ -17,6 +17,7 @@
 </head>
 <body  class=" login">
     <%-include ../header.ejs%>
+    <input type="hidden" id="articleId" value="<%=article?article._id:''%>">
     <div style="width: 60%;margin: 0 auto; margin-top: 100px;">
         <div class="portlet light bordered">
             <span>添加文章<span/>
@@ -24,12 +25,12 @@
                 <form role="form">
                     <div class="form-body">
                         <div class="form-group form-md-line-input form-md-floating-label">
-                            <input type="text" class="form-control" id="title" style="text-indent: 100px;">
+                            <input type="text" class="form-control" id="title" style="text-indent: 100px;" value="<%=article?article.title:''%>">
                             <label for="form_control_1">文章标题</label>
                             <span class="help-block">请输入您的文章标题</span>
                         </div>
                         <div class="form-group form-md-line-input form-md-floating-label">
-                            <input type="text" class="form-control" id="intro" style="text-indent: 100px;">
+                            <input type="text" class="form-control" id="intro" style="text-indent: 100px;" value="<%=article?article.intro:''%>">
                             <label for="form_control_1">文章简介</label>
                             <span class="help-block">对您的文章做些许简介</span>
                         </div>
@@ -37,7 +38,8 @@
                             <select class="form-control edited" id="typeSelect">
                                 <option value="">选择已有文章类型</option>
                                 <% if(articleType){for(var i=0 ; i < articleType.length; i++){%>
-                                <option value="<%=articleType[i].id%>"><%=articleType[i].name%></option>
+
+                                <option value="<%=articleType[i]._id%>" <%-article && article.type == articleType[i]._id ? 'selected' :'' %>><%=articleType[i].name%></option>
                                 <%}}%>
                             </select>
                             <label for="form_control_1">选择文章类型</label>
@@ -48,7 +50,7 @@
                             <span class="help-block">若上方无您想要的文章类型，您可手动添加新类型</span>
                         </div>
                         <div id="content" style="height: 500px;" class="form-group form-md-line-input form-md-floating-label has-info">
-                            <p>请输入内容...</p>
+                            <p> <%-article?article.content:'请输入内容...'%></p>
                         </div>
                     </div>
                     <div class="form-actions noborder" style="padding: 0px;width: 115px;margin: 0 auto;">
@@ -79,10 +81,10 @@
          */
             // init background slide images
         $.backstretch([
-                    "../assets/pages/media/bg/1.jpg",
-                    "../assets/pages/media/bg/2.jpg",
-                    "../assets/pages/media/bg/3.jpg",
-                    "../assets/pages/media/bg/4.jpg"
+                    "/assets/pages/media/bg/1.jpg",
+                    "/assets/pages/media/bg/2.jpg",
+                    "/assets/pages/media/bg/3.jpg",
+                    "/assets/pages/media/bg/4.jpg"
                 ], {
                     fade: 1000,
                     duration: 8000

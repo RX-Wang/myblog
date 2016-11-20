@@ -22,6 +22,7 @@ var saveArticle = function(e){
     var typeSelect  = $('#typeSelect').val();   //选择的类型
     var typeInput   = $('#typeInput').val();    //输入的类型
     var content     = $('#content').html();      //文章内容
+    var articleId   = $('#articleId').val()     //如果是编辑文章，则为文章ID
 
     if(!title){
         $('#title').focus();
@@ -43,7 +44,8 @@ var saveArticle = function(e){
             type        : typeSelect || typeInput,
             content     : content,
             typeSelect  : typeSelect,
-            typeInput   : typeInput
+            typeInput   : typeInput,
+            articleId   : articleId
         },
         success : function(data){
             if(data && data.code == 200){

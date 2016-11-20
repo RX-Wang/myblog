@@ -52,8 +52,8 @@ ArticlesDao.add = function(params,cb){
  * @param res
  * @returns {String}
  */
-ArticlesDao.edit = function(params,cb){
-
+ArticlesDao.edit = function(id,params,cb){
+    articleModel.findOneAndUpdate({_id:id},params,{},cb);
 };
 
 /**
@@ -66,8 +66,6 @@ ArticlesDao.typeList = function(params,cb){
     articleTypeModel.find(params,cb);
 };
 
-
-
 /**
  * 添加文章类型
  * @param req
@@ -79,5 +77,13 @@ ArticlesDao.addType = function(params,cb){
     articleType.save(cb);
 };
 
+/**
+ * 我的文章列表
+ * @param params
+ * @param cb
+ */
+ArticlesDao.myArticles = function(params,cb){
+    articleModel.find(params).sort({'createDate':-1}).exec(cb);
+};
 
 module.exports = ArticlesDao;

@@ -14,7 +14,7 @@
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
                     <li>
-                        <audio style="height: 46px;" src="/media/gxdyfj.mp3" title="故乡的原风景-宗次郎" autoplay controls="controls" loop></audio>
+                        <audio style="height: 46px;" src="/media/gxdyfj.mp3" title="故乡的原风景-宗次郎" controls="controls" loop></audio>
                     </li>
 
                     <!--系统信息 START-->
@@ -342,7 +342,7 @@
                             </li>
                         </ul>
                     </li>-->
-                    <%if(!user){%>
+                    <%if(!locals.c_user){%>
                     <li>
                         <a href="/users/toLoginOrRegister">
                             <i class="icon-login"></i>
@@ -354,12 +354,12 @@
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <img alt="" class="img-circle" src="/assets/img/avatar3_small.jpg">
-                            <span class="username username-hide-on-mobile"> <%=user.name%> </span>
+                            <span class="username username-hide-on-mobile"> <%=locals.c_user.name%> </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
-                                <a href="page_user_profile_1.html">
+                                <a href="/articles/myArticles">
                                     <i class="icon-user"></i>
                                     我的文章
                                 </a>

@@ -17,10 +17,10 @@
     <div class="content">
         <h2 style="text-align: center;">标题：<%-data.title%></h2>
         <i><%=data.user.name%></i>
-        <i><%=data.createDate%></i>
-        <span>简介：<%-data.intro%></span>
-        <span>类型：<%-data.type%></span>
-        <div>内容：<%-data.content%></div>
+        <i style="margin-left:20px;">发表于：<%=(new Date(data.createDate)).toLocaleDateString()%></i>
+        <span style="margin-left:20px;">类型：<%-data.type%></span>
+        <span style="display: block;">简介：<%-data.intro%></span>
+        <div style="background-color: white;"><%-data.content%></div>
     </div>
     <%- include ../footer.ejs%>
 </body>
