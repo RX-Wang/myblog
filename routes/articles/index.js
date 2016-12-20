@@ -14,7 +14,7 @@ var UsersController    = require('../../controller/users');
 /**
  * 跳转到添加文章页面
  */
-router.all('/toAddArticlePage/:id',UsersController.checkUser,ArticlesController.toAddArticlePage);
+router.all('/toAddArticlePage',UsersController.checkUser,ArticlesController.toAddArticlePage);
 
 /**
  * 添加文章
