@@ -117,7 +117,7 @@ Articles.detail = function(req,res){
  */
 Articles.toAddArticlePage = function(req,res){
     var user = req.session.user;
-    var id = req.body.id || req.params.id || null;     //文章ID
+    var id = req.body.id || req.params.id || req.query.id || null;     //文章ID
     async.parallel({
         articleType : function(cb){
             //获取已有的文章类型
