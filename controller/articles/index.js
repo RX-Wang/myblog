@@ -13,6 +13,8 @@ var result      = require('../../util/result');
 var Articles    = {};
 var Promise     = require('bluebird');
 var moment      = require('moment');
+var fs          = require('fs');
+var path        = require('path');
 
 /**
  * 网站首页 相关加载信息，查询文章列表
@@ -266,6 +268,25 @@ Articles.myArticles = function(req,res){
             res.render('articles/myArticles',{articles:data});
         }
     });
+};
+
+Articles.qrimg = function(req,res){
+    res.render('qrimg',{});
+};
+
+var qr = require('qr-image');
+
+Articles.create_qrcode = function(req,res){
+    var text = req.query.text;
+    try {
+        var img = qr.image(text,{size :10,type: 'jpg'});
+        res.writeHead(200, {'Content-Type': 'image/png'});
+        img.pipe(fs.createWriteStream(path.join(__dirname,'../../public/img/qrimg.jpg')));
+        img.pipe(res);
+    } catch (e) {
+        res.writeHead(414, {'Content-Type': 'text/html'});
+        res.end('<h1>414 Request-URI Too Large</h1>');
+    }
 };
 
 module.exports = Articles;
