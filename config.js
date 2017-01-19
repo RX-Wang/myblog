@@ -12,7 +12,12 @@ var mongo = {
         "db"      : "myblog"//数据库名称
 };
 var config = {
-    connection : 'mongodb://'+mongo.hostname + ':' + mongo.port +  '/' + mongo.db,
+    connection : (
+        mongo.username && mongo.password
+    )?
+    'mongodb://' + mongo.username+":" + mongo.password + "@"+mongo.hostname + ':' + mongo.port +  '/' + mongo.db
+        :
+    'mongodb://' + mongo.hostname + ':' + mongo.port +  '/' + mongo.db,
     connect    : function(){
         mongoose.connect(this.connection,function(err,data){
             if(err){
