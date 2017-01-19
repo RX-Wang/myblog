@@ -6,8 +6,8 @@ var mongoose = require('mongoose');
 var mongo = {
     "hostname": "127.0.0.1" ,
         "port"    : 27017 ,
-        "username": "" ,//暂时本地测试,
-        "password": "" ,
+        "username": "myblog" ,//暂时本地测试,
+        "password": "myblog" ,
         "name"    : "" ,
         "db"      : "myblog"//数据库名称
 };
