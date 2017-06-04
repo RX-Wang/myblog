@@ -289,4 +289,14 @@ Articles.create_qrcode = function(req,res){
     }
 };
 
+
+/**
+ * 测试水平滚动
+ * @param req
+ * @param res
+ */
+Articles.row_scroll = function (req,res) {
+    res.render('row_scroll');
+};
+
 module.exports = Articles;

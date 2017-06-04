@@ -7,5 +7,8 @@ var articleController = require('../controller/articles');
 router.get('/', articleController.index);
 router.get('/qrimg', articleController.qrimg);
 router.get('/create_qrcode', articleController.create_qrcode);
+router.all('/row_scroll', articleController.row_scroll);//测试水平滚动
+
+
 
 module.exports = router;

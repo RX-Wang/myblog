@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <style rel="stylesheet">
+        .ul-div{
+            /*
+                        overflow-x: hidden;
+            */
+        }
+        ul{
+            width: 560px;
+            overflow-x: scroll;
+            height:50px;
+            margin-left: -30px;
+            background: gray;
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+        li{
+            display: inline-block;
+            width:60px;
+            height:20px;
+        }
+        .next-div{
+            position: fixed;
+        }
+        .demo{
+            position: fixed;
+            top: 350px;
+            width: 300px;
+        }
+        #num{
+            width: 100%;
+            display: inline-block;
+            height: 50px;
+            background: antiquewhite;
+            text-align: center;
+            line-height: 50px;
+            font-size: 2em;
+        }
+        #increase{
+            width: 49%;
+            height: 50px;
+            background: brown;
+            border: 0;
+            font-size: 2em;
+        }
+        #decrease{
+            width: 49%;
+            height: 50px;
+            background: aquamarine;
+            border: 0;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+<!--<h1 style="position: fixed;">哈哈</h1>-->
+<!-- <div class="ul-div">-->
+<ul>
+    <li>标题一</li>
+    <li>标题2</li>
+    <li>标题3</li>
+    <li>标题4</li>
+    <li>标题5</li>
+    <li>标题6</li>
+    <li>标题7</li>
+    <li>标题8</li>
+    <li>标题9</li>
+    <li>标题10</li>
+</ul>
+<!--</div>-->
+<div class="next-div">
+    <p>
+        asdfa;lskdjfa;skdfasdf
+    </p>
+    <h1>哈哈</h1>
+    <div style="width:200px;height: 100px;background: red;"></div>
+</div>
+<div class="demo">
+    <span id="num"></span>
+    <button id="increase">+</button>
+    <button id="decrease">-</button>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script>
+
+    (function() {
+        var view = new myapp.View();
+        view.init();
+    })();
+
+    /*setInterval(function () {
+     $.get('/users/connections_pool',{},function (result) {
+     if(result.code === 200)
+     console.log(result.result);
+     else
+     console.log(result.err);
+     })
+     },1000);
+     setInterval(function () {
+     $.get('/users/connections_pool02',{},function (result) {
+     if(result.code === 200)
+     console.log(result.result);
+     else
+     console.log(result.err);
+     })
+     },1000);*/
+
+</script>
+</body>
+</html>
