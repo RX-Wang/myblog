@@ -8,6 +8,7 @@ router.get('/', articleController.index);
 router.get('/qrimg', articleController.qrimg);
 router.get('/create_qrcode', articleController.create_qrcode);
 router.all('/row_scroll', articleController.row_scroll);//测试水平滚动
+router.all('/touch', articleController.touch);//测试手机手势滑动
 
 
 

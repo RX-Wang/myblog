@@ -31,12 +31,24 @@
               <div class="col-md-8">
                   <!-- BEGIN WELLS PORTLET-->
                   <div>
+                      <ul>
+                          <li>
+                              <a href="/row_scroll">测试水平滚动</a>
+                          </li>
+                          <li>
+                              <a href="/bookList">书籍管理</a>
+                          </li>
+                          <li>
+                              <a href="/touch">测试手机滑动</a>
+                          </li>
+                      </ul>
+
                       <div class="portlet light bordered">
+
                           <div class="portlet-title">
                               <div class="caption">
                                   <i class="icon-social-dribbble font-purple"></i>
                                   <span class="caption-subject font-purple bold uppercase">最新文章</span>
-                                  <a href="/row_scroll">测试水平滚动</a>
                               </div>
                           </div>
                           <div class="portlet-body">
@@ -45,7 +57,7 @@
                                   <!--文章标题-->
                                   <h4>
                                       <a href="/articles/articleDetail/<%=articles[i].id%>"><%=articles[i].title%></a>
-                                      <p><%=articles[i].intro%></p>
+                                      <p style="margin-top: 10px">简介：<%=articles[i].intro%></p>
                                   </h4>
                               </div>
                               <%}}else{%>
@@ -64,15 +76,15 @@
                       </div>
                   </div>
                   <!-- END WELLS PORTLET-->
-                  <div>
-                      <!-- BEGIN GENERAL PORTLET-->
+                  <!--<div>
+                      &lt;!&ndash; BEGIN GENERAL PORTLET&ndash;&gt;
                       <div class="portlet light bordered">
                           <div class="portlet-title">
                               <div class="caption">
                                   <i class="icon-social-dribbble font-blue-sharp"></i>
                                   <span class="caption-subject font-blue-sharp bold uppercase">风采</span>
                               </div>
-                              <!--<div class="actions">
+                              <div class="actions">
                                   <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                                       <i class="icon-cloud-upload"></i>
                                   </a>
@@ -82,7 +94,7 @@
                                   <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                                       <i class="icon-trash"></i>
                                   </a>
-                              </div>-->
+                              </div>
                           </div>
                           <div class="portlet-body">
                               <div class="row">
@@ -155,9 +167,9 @@
                           </div>
                       </div>
                   </div>
-                  <!-- END GENERAL PORTLET-->
+                  &lt;!&ndash; END GENERAL PORTLET&ndash;&gt;
                   <div>
-                      <!-- BEGIN BLOCKQUOTES PORTLET-->
+                      &lt;!&ndash; BEGIN BLOCKQUOTES PORTLET&ndash;&gt;
                       <div class="portlet light bordered">
                           <div class="portlet-title">
                               <div class="caption">
@@ -197,9 +209,9 @@
                               </div>
                           </div>
                       </div>
-                      <!-- END BLOCKQUOTES PORTLET-->
+                      &lt;!&ndash; END BLOCKQUOTES PORTLET&ndash;&gt;
                   </div>
-                  <!-- BEGIN WELLS PORTLET-->
+                  &lt;!&ndash; BEGIN WELLS PORTLET&ndash;&gt;
                   <div>
                       <div class="portlet light bordered">
                           <div class="portlet-title">
@@ -207,7 +219,7 @@
                                   <i class="icon-social-dribbble font-red"></i>
                                   <span class="caption-subject font-red bold uppercase">Alignments</span>
                               </div>
-                              <!--<div class="actions">
+                              &lt;!&ndash;<div class="actions">
                                   <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                                       <i class="icon-cloud-upload"></i>
                                   </a>
@@ -217,7 +229,7 @@
                                   <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                                       <i class="icon-trash"></i>
                                   </a>
-                              </div>-->
+                              </div>&ndash;&gt;
                           </div>
                           <div class="portlet-body">
                               <p class="text-left"> Left aligned text. </p>
@@ -225,20 +237,20 @@
                               <p class="text-right"> Right aligned text. </p>
                           </div>
                       </div>
-                  </div>
+                  </div>-->
                   <!-- END WELLS PORTLET-->
               </div>
-              <div class="col-md-4">
-                  <!-- BEGIN UNORDERED LISTS PORTLET-->
+              <!--<div class="col-md-4">
+                  &lt;!&ndash; BEGIN UNORDERED LISTS PORTLET&ndash;&gt;
                   <div class="portlet box red">
                       <div class="portlet-title">
                           <div class="caption">
                               <i class="fa fa-gift"></i>热门文章
                           </div>
-                          <!--折叠按钮：向下的箭头-->
-                          <!--<div class="tools">
+                          &lt;!&ndash;折叠按钮：向下的箭头&ndash;&gt;
+                          &lt;!&ndash;<div class="tools">
                               <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                          </div>-->
+                          </div>&ndash;&gt;
                       </div>
                       <div class="portlet-body">
                           <ul>
@@ -260,17 +272,17 @@
                           </ul>
                       </div>
                   </div>
-                  <!-- END UNORDERED LISTS PORTLET-->
-                  <!-- BEGIN ORDERED LISTS PORTLET-->
+                  &lt;!&ndash; END UNORDERED LISTS PORTLET&ndash;&gt;
+                  &lt;!&ndash; BEGIN ORDERED LISTS PORTLET&ndash;&gt;
                   <div class="portlet box blue">
                       <div class="portlet-title">
                           <div class="caption">
                               <i class="fa fa-gift"></i>热门软件
                           </div>
-                          <!--折叠按钮：向下的箭头-->
-                          <!--<div class="tools">
+                          &lt;!&ndash;折叠按钮：向下的箭头&ndash;&gt;
+                          &lt;!&ndash;<div class="tools">
                               <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                          </div>-->
+                          </div>&ndash;&gt;
                       </div>
                       <div class="portlet-body">
                           <ol>
@@ -285,17 +297,17 @@
                           </ol>
                       </div>
                   </div>
-                  <!-- END ORDERED LISTS PORTLET-->
-                  <!-- BEGIN UNSTYLED LISTS PORTLET-->
+                  &lt;!&ndash; END ORDERED LISTS PORTLET&ndash;&gt;
+                  &lt;!&ndash; BEGIN UNSTYLED LISTS PORTLET&ndash;&gt;
                   <div class="portlet box yellow">
                       <div class="portlet-title">
                           <div class="caption">
                               <i class="fa fa-gift"></i>热门教程
                           </div>
-                          <!--折叠按钮：向下的箭头-->
-                          <!--<div class="tools">
+                          &lt;!&ndash;折叠按钮：向下的箭头&ndash;&gt;
+                          &lt;!&ndash;<div class="tools">
                               <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                          </div>-->
+                          </div>&ndash;&gt;
                       </div>
                       <div class="portlet-body">
                           <ul class="list-unstyled">
@@ -317,17 +329,17 @@
                           </ul>
                       </div>
                   </div>
-                  <!-- END UNSTYLED LISTS PORTLET-->
-                  <!-- BEGIN UNSTYLED LISTS PORTLET-->
+                  &lt;!&ndash; END UNSTYLED LISTS PORTLET&ndash;&gt;
+                  &lt;!&ndash; BEGIN UNSTYLED LISTS PORTLET&ndash;&gt;
                   <div class="portlet box red">
                       <div class="portlet-title">
                           <div class="caption">
                               <i class="fa fa-gift"></i>热门开源
                           </div>
-                          <!--折叠按钮：向下的箭头-->
-                          <!--<div class="tools">
+                          &lt;!&ndash;折叠按钮：向下的箭头&ndash;&gt;
+                          &lt;!&ndash;<div class="tools">
                               <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                          </div>-->
+                          </div>&ndash;&gt;
                       </div>
                       <div class="portlet-body">
                           <ul class="list-inline">
@@ -337,17 +349,17 @@
                           </ul>
                       </div>
                   </div>
-                  <!-- END UNSTYLED LISTS PORTLET-->
-                  <!-- BEGIN DESCRIPTION LISTS PORTLET-->
+                  &lt;!&ndash; END UNSTYLED LISTS PORTLET&ndash;&gt;
+                  &lt;!&ndash; BEGIN DESCRIPTION LISTS PORTLET&ndash;&gt;
                   <div class="portlet box purple">
                       <div class="portlet-title">
                           <div class="caption">
                               <i class="fa fa-gift"></i>热门作者
                           </div>
-                          <!--折叠按钮：向下的箭头-->
-                          <!--<div class="tools">
+                          &lt;!&ndash;折叠按钮：向下的箭头&ndash;&gt;
+                          &lt;!&ndash;<div class="tools">
                               <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                          </div>-->
+                          </div>&ndash;&gt;
                       </div>
                       <div class="portlet-body">
                           <dl>
@@ -361,17 +373,17 @@
                           </dl>
                       </div>
                   </div>
-                  <!-- END DESCRIPTION LISTS PORTLET-->
-                  <!-- BEGIN DESCRIPTION LISTS PORTLET-->
+                  &lt;!&ndash; END DESCRIPTION LISTS PORTLET&ndash;&gt;
+                  &lt;!&ndash; BEGIN DESCRIPTION LISTS PORTLET&ndash;&gt;
                   <div class="portlet box blue">
                       <div class="portlet-title">
                           <div class="caption">
                               <i class="fa fa-gift"></i>热门电影
                           </div>
-                          <!--折叠按钮：向下的箭头-->
-                          <!--<div class="tools">
+                          &lt;!&ndash;折叠按钮：向下的箭头&ndash;&gt;
+                          &lt;!&ndash;<div class="tools">
                               <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                          </div>-->
+                          </div>&ndash;&gt;
                       </div>
                       <div class="portlet-body">
                           <p class="text-muted"> Muted text here </p>
@@ -382,8 +394,8 @@
                           <p class="text-danger"> Danger text here </p>
                       </div>
                   </div>
-                  <!-- END DESCRIPTION LISTS PORTLET-->
-              </div>
+                  &lt;!&ndash; END DESCRIPTION LISTS PORTLET&ndash;&gt;
+              </div>-->
           </div>
       </div>
       <%-include footer.ejs%>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <style rel="stylesheet">
+        .ul-div{
+            /*
+                        overflow-x: hidden;
+            */
+        }
+        ul{
+            width: 700px;
+            overflow-x: scroll;
+            height:50px;
+            margin-left: -30px;
+            background: gray;
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+        li{
+            display: inline-block;
+            width:60px;
+            height:20px;
+        }
+        .next-div{
+            position: fixed;
+        }
+        .demo{
+            position: fixed;
+            top: 350px;
+            width: 300px;
+        }
+        #num{
+            width: 100%;
+            display: inline-block;
+            height: 50px;
+            background: antiquewhite;
+            text-align: center;
+            line-height: 50px;
+            font-size: 2em;
+        }
+        #increase{
+            width: 49%;
+            height: 50px;
+            background: brown;
+            border: 0;
+            font-size: 2em;
+        }
+        #decrease{
+            width: 49%;
+            height: 50px;
+            background: aquamarine;
+            border: 0;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+<!--<h1 style="position: fixed;">哈哈</h1>-->
+<!-- <div class="ul-div">-->
+<ul>
+    <li>标题一</li>
+    <li>标题2</li>
+
+</ul>
+<script src="//cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script>
+
+    (function() {
+        var view = new myapp.View();
+        view.init();
+    })();
+
+    var mybody = document.getElementsByTagName('body')[0];
+
+
+
+    //滑动处理
+
+    var startX, startY, moveEndX, moveEndY, X, Y;
+
+    mybody.addEventListener('touchstart', function(e) {
+
+        e.preventDefault();
+
+        startX = e.touches[0].pageX;
+
+        startY = e.touches[0].pageY;
+
+    }, false);
+
+    mybody.addEventListener('touchmove', function(e) {
+
+        e.preventDefault();
+
+        moveEndX = e.changedTouches[0].pageX;
+
+        moveEndY = e.changedTouches[0].pageY;
+
+        X = moveEndX - startX;
+
+        Y = moveEndY - startY;
+
+
+
+        if ( Math.abs(X) > Math.abs(Y) && X > 0 ) {
+
+            alert("向右");
+
+        }
+
+        else if ( Math.abs(X) > Math.abs(Y) && X < 0 ) {
+
+            alert("向左");
+
+        }
+
+        else if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+
+            alert("向下");
+
+        }
+
+        else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+
+            alert("向上");
+
+        }
+
+        else{
+
+            alert("没滑动");
+
+        }
+
+    });
+
+</script>
+</body>
+</html>

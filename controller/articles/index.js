@@ -298,5 +298,13 @@ Articles.create_qrcode = function(req,res){
 Articles.row_scroll = function (req,res) {
     res.render('row_scroll');
 };
+/**
+ * 测试手机手势滑动
+ * @param req
+ * @param res
+ */
+Articles.touch = function (req,res) {
+    res.render('touch');
+};
 
 module.exports = Articles;
