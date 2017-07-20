@@ -21,16 +21,105 @@
         }
         body{
             overflow: hidden;
+            margin:0;
+            padding:0;
+        }
+        ul li {
+            margin: 10px 0;
+            background: palegoldenrod;
+            list-style: none;
+            height: 40px;
+            line-height: 40px;
+        }
+        i{
+            font-style: normal;
+            margin-left: 60px;
+        }
+        button {
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            height: 100%;
+            float: right;
+            width: 60px;
+            margin-right: -60px;
         }
     </style>
 </head>
 <body>
-<div id="demo">
+<!--<div id="demo">
     <div id="demo1"></div>
     <div id="demo2"></div>
-</div>
+</div>-->
+    <ul>
+        <li>
+            <i>11</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>22</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>33</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>44</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>55</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>66</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>77</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>88</i>
+            <button>点击一下</button>
+        </li>
+        <li>
+            <i>99</i>
+            <button>点击一下</button>
+        </li>
+
+    </ul>
+<script src="//cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 <script>
-    var slideDom = document.getElementById("demo");//滑动区域
+    jQuery(function ($) {
+        $('.ui-btn-inner').hide();
+        $('.ui-btn').css('display','inline');
+    });
+    $('li').on('swipeleft',function (e) {
+        $(e.target).css({
+            transform : 'translateX(-60px)',
+            transition : 'transform 300ms ease'
+        });
+        /*$(e.target).find('button').css({
+            'margin-right'  : '0',
+            transition      : 'transform 300ms ease'
+        });*/
+    })
+    $('li').on('swiperight',function (e) {
+        $(e.target).css({
+            transform : 'translateX(0px)',
+            transition : 'transform 300ms ease'
+        });
+        /*$(e.target).find('button').css({
+            'margin-right'  : '-60',
+            transition      : 'transform 300ms ease'
+        });*/
+    })
+
+    /*var slideDom = document.getElementById("demo");//滑动区域
     var length = slideDom.children.length;//子类节点长度
     var index = 0;//初始下标
     window.prevX = 0;
@@ -97,7 +186,7 @@
             slideDom.setAttribute('style', 'transform: translate(' + x + 'px, 0px);transition:transform 0ms ease');
         }
 
-    };
+    };*/
 </script>
 </body>
 </html>
